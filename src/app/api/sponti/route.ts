@@ -23,6 +23,8 @@ function loadSprueche() {
   return sprueche;
 }
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   const data = loadSprueche();
   const randomIndex = Math.floor(Math.random() * data.length);
