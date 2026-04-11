@@ -25,10 +25,41 @@ function loadSprueche() {
 
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const category = searchParams.get('category');
+  const all = searchParams.get('all');
+  const categories = searchParams.get('categories');
+  
   const data = loadSprueche();
-  const randomIndex = Math.floor(Math.random() * data.length);
-  const randomSpruch = data[randomIndex];
+  
+  if (categories === 'true') {
+    const cats = new Set<string>();
+    data.forEach(s => {
+      if (s.category) cats.add(s.category);
+    });
+    return NextResponse.json({
+      categories: Array.from(cats).sort()
+    });
+  }
+  
+  let filtered = data;
+  
+  if (category) {
+    filtered = data.filter(s => 
+      s.category?.toLowerCase() === category.toLowerCase()
+    );
+  }
+  
+  if (all === 'true') {
+    return NextResponse.json({
+      sprueche: filtered,
+      count: filtered.length
+    });
+  }
+  
+  const randomIndex = Math.floor(Math.random() * filtered.length);
+  const randomSpruch = filtered[randomIndex];
   
   return NextResponse.json(randomSpruch);
 }
