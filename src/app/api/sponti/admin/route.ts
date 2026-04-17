@@ -24,8 +24,22 @@ function saveSprueche(data: Spruch[]): void {
 
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const categories = searchParams.get('categories');
+  
   const data = loadSprueche();
+  
+  if (categories === 'true') {
+    const cats = new Set<string>();
+    data.forEach(s => {
+      if (s.category) {
+        s.category.split(',').forEach(c => cats.add(c.trim()));
+      }
+    });
+    return NextResponse.json({ categories: Array.from(cats).sort() });
+  }
+  
   return NextResponse.json(data);
 }
 

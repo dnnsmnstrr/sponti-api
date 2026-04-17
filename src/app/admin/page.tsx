@@ -15,6 +15,7 @@ const API_URL = "/api/sponti/admin";
 
 export default function Admin() {
   const [sprueche, setSprueche] = useState<Spruch[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
   const [editId, setEditId] = useState<number | null>(null);
   const [form, setForm] = useState<Partial<Spruch>>({});
   const [filter, setFilter] = useState("");
@@ -22,12 +23,19 @@ export default function Admin() {
 
   useEffect(() => {
     fetchSprueche();
+    fetchCategories();
   }, []);
 
   const fetchSprueche = async () => {
     const res = await fetch(API_URL);
     const data = await res.json();
     setSprueche(data);
+  };
+
+  const fetchCategories = async () => {
+    const res = await fetch(API_URL + "?categories=true");
+    const data = await res.json();
+    setCategories(data.categories);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -103,18 +111,41 @@ export default function Admin() {
           <div style={{ flex: 1 }}>
             <label style={{ display: "block", marginBottom: 5 }}>Category (comma-separated)</label>
             <input
+              list="categories"
               value={form.category || ""}
               onChange={e => setForm({ ...form, category: e.target.value || null })}
               style={{ width: "100%", padding: 8 }}
             />
+            <datalist id="categories">
+              {categories.map(c => (
+                <option key={c} value={c} />
+              ))}
+            </datalist>
           </div>
           <div style={{ flex: 1 }}>
             <label style={{ display: "block", marginBottom: 5 }}>Source</label>
-            <input
-              value={form.source || ""}
-              onChange={e => setForm({ ...form, source: e.target.value || null })}
-              style={{ width: "100%", padding: 8 }}
-            />
+            <div style={{ display: "flex", gap: 0 }}>
+              <input
+                value={form.source || ""}
+                onChange={e => setForm({ ...form, source: e.target.value || null })}
+                style={{ flex: 1, padding: 8, borderRight: "none" }}
+              />
+              <a
+                href={form.source || ""}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  padding: "8px 12px",
+                  background: "#eee",
+                  border: "1px solid #ccc",
+                  textDecoration: "none",
+                  color: form.source ? "black" : "#999",
+                  pointerEvents: form.source ? "auto" : "none",
+                }}
+              >
+                ↗
+              </a>
+            </div>
           </div>
           <div style={{ width: 80 }}>
             <label style={{ display: "block", marginBottom: 5 }}>Rating</label>
