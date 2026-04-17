@@ -41,3 +41,24 @@ npm run dev    # Start dev server
 npm run build  # Production build
 npm run start  # Run production server
 ```
+
+## TRMNL Plugin
+
+https://trmnl.com/recipes/283470
+
+```html
+<div class="layout">
+  <div class="columns">
+    <div class="column">
+      <div class="markdown gap--large text--center">
+        <span class="title title--xlarge">{{ spruch }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="title_bar">
+  <span class="title">{{ trmnl.plugin_settings.instance_name }}</span>
+  <span class="instance">Kategorie: {{ category }}</span>
+</div>
+```
