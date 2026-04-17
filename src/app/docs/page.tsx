@@ -9,9 +9,11 @@ export default function Docs() {
   const [loading, setLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [currentUrl, setCurrentUrl] = useState("");
+  const [sources, setSources] = useState<string[]>([]);
 
   useEffect(() => {
     fetchCategories();
+    fetchSources();
     testRandom();
   }, []);
 
@@ -19,6 +21,13 @@ export default function Docs() {
     const res = await fetch("/api/sponti/categories");
     const data = await res.json();
     setCategories(data.categories);
+  };
+
+  const fetchSources = async () => {
+    const res = await fetch("/api/sponti?all=true");
+    const data = await res.json();
+    const uniqueSources = [...new Set(data.sprueche.map((s: any) => s.source).filter(Boolean))] as string[];
+    setSources(uniqueSources.sort());
   };
 
   const testRandom = async () => {
@@ -56,11 +65,16 @@ export default function Docs() {
     <div style={{ maxWidth: 900, margin: "0 auto", padding: 20, fontFamily: "system-ui" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <h1 style={{ margin: 0 }}>Sponti API Docs</h1>
-        {typeof window !== 'undefined' && window.location.hostname === 'localhost' && (
-          <a href="/admin" style={{ padding: "8px 16px", background: "#eee", borderRadius: 4, textDecoration: "none" }}>
-            Admin ↗
+        <div style={{ display: "flex", gap: 8 }}>
+          <a href="https://github.com/dnnsmnstrr/sponti-api" target="_blank" rel="noopener noreferrer" style={{ padding: "8px 16px", background: "#eee", borderRadius: 4, textDecoration: "none" }}>
+            GitHub ↗
           </a>
-        )}
+          {typeof window !== 'undefined' && window.location.hostname === 'localhost' && (
+            <a href="/admin" style={{ padding: "8px 16px", background: "#eee", borderRadius: 4, textDecoration: "none" }}>
+              Admin ↗
+            </a>
+          )}
+        </div>
       </div>
 
       <section style={{ marginBottom: 30 }}>
@@ -168,6 +182,19 @@ export default function Docs() {
             </button>
           ))}
         </div>
+      </section>
+
+      <section>
+        <h2>Sources ({sources.length})</h2>
+        <ul style={{ listStyle: "none", padding: 0 }}>
+          {sources.map(s => (
+            <li key={s} style={{ marginBottom: 8 }}>
+              <a href={s} target="_blank" rel="noopener noreferrer" style={{ color: "#0066cc" }}>
+                {s.replace(/^https?:\/\/(www\.)?/, '').replace(/\/.*/, '')}
+              </a>
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   );
