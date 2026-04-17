@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-export default function Docs() {
+export default function DocsDe() {
   const [mounted, setMounted] = useState(false);
   const [categories, setCategories] = useState<string[]>([]);
   const [spruch, setSpruch] = useState<any>(null);
@@ -67,7 +67,7 @@ export default function Docs() {
   return (
     <div style={{ maxWidth: 900, margin: "0 auto", padding: 20, fontFamily: "system-ui" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <h1 style={{ margin: 0 }}>Sponti API Docs</h1>
+        <h1 style={{ margin: 0 }}>Sponti API Dokumentation</h1>
         <div style={{ display: "flex", gap: 8 }}>
           <a href="https://github.com/dnnsmnstrr/sponti-api" target="_blank" rel="noopener noreferrer" style={{ padding: "8px 16px", background: "#eee", borderRadius: 4, textDecoration: "none" }}>
             GitHub ↗
@@ -80,33 +80,42 @@ export default function Docs() {
         </div>
       </div>
 
+      <div style={{ display: "flex", gap: 10, marginBottom: 20 }}>
+        <a href="/docs" style={{ padding: "8px 16px", background: "#eee", borderRadius: 4, textDecoration: "none" }}>
+          English
+        </a>
+        <span style={{ padding: "8px 16px", background: "#ddd", borderRadius: 4 }}>
+          Deutsch
+        </span>
+      </div>
+
       <section style={{ marginBottom: 30 }}>
         <h2>GET /api/sponti</h2>
-        <p>Returns a random German quote (Spruch).</p>
+        <p>Gibt einen zufälligen deutschen Spruch zurück.</p>
 
         <div style={{ background: "#f5f5f5", padding: 15, borderRadius: 8, marginBottom: 15 }}>
-          <h3 style={{ marginTop: 0 }}>Parameters</h3>
+          <h3 style={{ marginTop: 0 }}>Parameter</h3>
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
             <thead>
               <tr style={{ textAlign: "left" }}>
-                <th style={{ padding: "8px 0" }}>Param</th>
-                <th>Description</th>
+                <th style={{ padding: "8px 0" }}>Parameter</th>
+                <th>Beschreibung</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td style={{ padding: "8px 0", fontFamily: "monospace" }}>category</td>
-                <td>Filter by category</td>
+                <td>Nach Kategorie filtern</td>
               </tr>
               <tr>
                 <td style={{ padding: "8px 0", fontFamily: "monospace" }}>all</td>
-                <td>Return all quotes (true)</td>
+                <td>Alle Sprüche zurückgeben (true)</td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <h3>Try it</h3>
+        <h3>Ausprobieren</h3>
         <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 10, marginBottom: 15 }}>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <select
@@ -114,29 +123,29 @@ export default function Docs() {
               onChange={e => setSelectedCategory(e.target.value)}
               style={{ padding: 8 }}
             >
-              <option value="">All categories</option>
+              <option value="">Alle Kategorien</option>
               {categories.map(c => (
                 <option key={c} value={c}>{c}</option>
               ))}
             </select>
             <button onClick={testRandom} disabled={loading} style={{ padding: "8px 16px" }}>
-              Random
+              Zufällig
             </button>
             <button onClick={testAll} disabled={loading} style={{ padding: "8px 16px" }}>
-              All ({selectedCategory || "all"})
+              Alle ({selectedCategory || "alle"})
             </button>
           </div>
 
           {currentUrl && (
             <div style={{ display: "flex", gap: 8 }}>
               <button onClick={() => copyToClipboard(getFullUrl())} style={{ padding: "6px 12px" }}>
-                Copy GET url
+                GET-URL kopieren
               </button>
               <button onClick={() => copyToClipboard(getCurl())} style={{ padding: "6px 12px" }}>
-                Copy curl
+                curl kopieren
               </button>
               <button onClick={() => copyToClipboard(getFetch())} style={{ padding: "6px 12px" }}>
-                Copy fetch
+                fetch kopieren
               </button>
             </div>
           )}
@@ -144,7 +153,7 @@ export default function Docs() {
 
         {spruch && (
           <div style={{ background: "#e8f5e9", padding: 15, borderRadius: 8 }}>
-            <h4 style={{ marginTop: 0 }}>Random Response</h4>
+            <h4 style={{ marginTop: 0 }}>Antwort (zufällig)</h4>
             <pre style={{ margin: 0, whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
               {JSON.stringify(spruch, null, 2)}
             </pre>
@@ -154,10 +163,10 @@ export default function Docs() {
         {sprueche && (
           <div style={{ background: "#e8f5e9", padding: 15, borderRadius: 8, marginTop: 15 }}>
             <h4 style={{ marginTop: 0 }}>
-              All Responses ({sprueche.count} quotes)
+              Alle Antworten ({sprueche.count} Sprüche)
             </h4>
             <details>
-              <summary style={{ cursor: "pointer" }}>Show all ({sprueche.sprueche.length} items)</summary>
+              <summary style={{ cursor: "pointer" }}>Alle anzeigen ({sprueche.sprueche.length} Elemente)</summary>
               <pre style={{ maxHeight: 300, overflow: "auto", marginTop: 10 }}>
                 {JSON.stringify(sprueche, null, 2)}
               </pre>
@@ -168,10 +177,10 @@ export default function Docs() {
 
       <section style={{ marginBottom: 30 }}>
         <h2>GET /api/sponti/categories</h2>
-        <p>Returns a list of all available categories.</p>
+        <p>Gibt eine Liste aller verfügbaren Kategorien zurück.</p>
 
         <div style={{ background: "#f5f5f5", padding: 15, borderRadius: 8 }}>
-          <h3 style={{ marginTop: 0 }}>Example Response</h3>
+          <h3 style={{ marginTop: 0 }}>Beispielantwort</h3>
           <pre style={{ margin: 0 }}>
 {`{
   "categories": ["Arbeit ist doof", "Saufen", "Switcheroo", ...]
@@ -181,7 +190,7 @@ export default function Docs() {
       </section>
 
       <section>
-        <h2>Categories ({categories.length})</h2>
+        <h2>Kategorien ({categories.length})</h2>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
           {categories.map(c => (
             <button
@@ -203,7 +212,7 @@ export default function Docs() {
       </section>
 
       <section>
-        <h2>Sources ({sources.length})</h2>
+        <h2>Quellen ({sources.length})</h2>
         <ul style={{ listStyle: "none", padding: 0 }}>
           {sources.map(s => (
             <li key={s} style={{ marginBottom: 8 }}>

@@ -522,7 +522,7 @@
   {
     "spruch": "Auch Glatzköpfe haben manchmal Glückssträhnen.",
     "explanation": null,
-    "category": null,
+    "category": "Bodyshaming",
     "source": "https://www.fh-muenster.de/ciw/downloads/personal/juestel/juestel/Sponti-Sprueche.pdf",
     "rating": null,
     "id": 66
@@ -778,7 +778,7 @@
   {
     "spruch": "Bienen sind gar nicht so fleißig, sie können nur nicht langsamer fliegen.",
     "explanation": null,
-    "category": null,
+    "category": "Tiere",
     "source": "https://www.fh-muenster.de/ciw/downloads/personal/juestel/juestel/Sponti-Sprueche.pdf",
     "rating": null,
     "id": 98
@@ -1266,7 +1266,7 @@
   {
     "spruch": "Der fette Vogel bricht den Ast.",
     "explanation": null,
-    "category": "Tiere,Fatshaming",
+    "category": "Tiere,Bodyshaming",
     "source": "https://www.fh-muenster.de/ciw/downloads/personal/juestel/juestel/Sponti-Sprueche.pdf",
     "rating": null,
     "id": 159
@@ -1466,7 +1466,7 @@
   {
     "spruch": "Der Student studiert, der Arbeiter arbeitet, der Chef scheffelt.",
     "explanation": null,
-    "category": null,
+    "category": "Arbeit ist doof",
     "source": "https://www.fh-muenster.de/ciw/downloads/personal/juestel/juestel/Sponti-Sprueche.pdf",
     "rating": null,
     "id": 184
@@ -1690,7 +1690,7 @@
   {
     "spruch": "Die Macht der Presse spüren vor allem die Weintrauben.",
     "explanation": null,
-    "category": null,
+    "category": "Saufen",
     "source": "https://www.fh-muenster.de/ciw/downloads/personal/juestel/juestel/Sponti-Sprueche.pdf",
     "rating": null,
     "id": 212
@@ -2954,7 +2954,7 @@
   {
     "spruch": "Für den Weihnachtsmann: Weg mit den Osterhasen.",
     "explanation": null,
-    "category": null,
+    "category": "Merry Crisis",
     "source": "https://www.fh-muenster.de/ciw/downloads/personal/juestel/juestel/Sponti-Sprueche.pdf",
     "rating": null,
     "id": 370
@@ -4602,7 +4602,7 @@
   {
     "spruch": "Leihen Sie Geld lieber bei Pessimisten; sie erwarten keine Rückzahlung.",
     "explanation": null,
-    "category": null,
+    "category": "Finanzen",
     "source": "https://wolfgang-naeser-marburg.lima-city.de/htm/sponti.htm",
     "rating": null,
     "id": 576
@@ -6274,7 +6274,7 @@
   {
     "spruch": "Nimm alles, dann brauchst du nichts.",
     "explanation": null,
-    "category": null,
+    "category": "Ego",
     "source": "https://wolfgang-naeser-marburg.lima-city.de/htm/sponti.htm",
     "rating": null,
     "id": 785
@@ -6730,7 +6730,7 @@
   {
     "spruch": "Schafft Weihnachten ab! Josef [nicht: Fischer] hat alles zugegeben.",
     "explanation": null,
-    "category": null,
+    "category": "Merry Crisis",
     "source": "https://wolfgang-naeser-marburg.lima-city.de/htm/sponti.htm",
     "rating": null,
     "id": 842
@@ -7170,7 +7170,7 @@
   {
     "spruch": "Sturm ist erst, wenn Schafe keine Locken mehr haben. ",
     "explanation": "(Facebook, 3.2.2016)",
-    "category": null,
+    "category": "Tiere",
     "source": "https://wolfgang-naeser-marburg.lima-city.de/htm/sponti.htm",
     "rating": null,
     "id": 897
@@ -7690,7 +7690,7 @@
   {
     "spruch": "Was meinen Sie als Unbeteiligter zum Thema Intelligenz?",
     "explanation": null,
-    "category": null,
+    "category": "Dummheit",
     "source": "https://wolfgang-naeser-marburg.lima-city.de/htm/sponti.htm",
     "rating": null,
     "id": 962
@@ -7714,7 +7714,7 @@
   {
     "spruch": "Was Vatikan, kann Mutti schon lange.",
     "explanation": null,
-    "category": null,
+    "category": "Familie",
     "source": "https://wolfgang-naeser-marburg.lima-city.de/htm/sponti.htm",
     "rating": null,
     "id": 965
@@ -8858,7 +8858,7 @@
   {
     "spruch": "Will der Bauer schneller pflügen, tät ein Porsche schon genügen.",
     "explanation": null,
-    "category": "Finanzen,Autos,Reim",
+    "category": "Finanzen,Autos,Reim,Bauernweisheiten",
     "source": "https://wolfgang-naeser-marburg.lima-city.de/htm/sponti.htm",
     "rating": 2,
     "id": 1108
@@ -8874,7 +8874,7 @@
   {
     "spruch": "Willst du dir den Tag versauen, musst du in den Spiegel schauen.",
     "explanation": null,
-    "category": "Pretty Priviledge,Fatshaming,Reim",
+    "category": "Bodyshaming",
     "source": "https://wolfgang-naeser-marburg.lima-city.de/htm/sponti.htm",
     "rating": 3,
     "id": 1110
