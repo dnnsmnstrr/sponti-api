@@ -36,7 +36,9 @@ export async function GET(request: Request) {
   if (categories === 'true') {
     const cats = new Set<string>();
     data.forEach(s => {
-      if (s.category) cats.add(s.category);
+      if (s.category) {
+        s.category.split(',').forEach(c => cats.add(c.trim()));
+      }
     });
     return NextResponse.json({
       categories: Array.from(cats).sort()
@@ -46,8 +48,9 @@ export async function GET(request: Request) {
   let filtered = data;
   
   if (category) {
+    const catLower = category.toLowerCase();
     filtered = data.filter(s => 
-      s.category?.toLowerCase() === category.toLowerCase()
+      s.category?.split(',').map(c => c.trim().toLowerCase()).includes(catLower)
     );
   }
   

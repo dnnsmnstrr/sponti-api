@@ -1,5 +1,25 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+# Sponti
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+Simple Next.js 14 API project serving random German quotes ("Sprueche").
+
+## Commands
+
+- `npm run dev` - Start dev server
+- `npm run build` - Production build
+- `npm run lint` - Run ESLint
+
+No typecheck or test scripts configured.
+
+## Data
+
+- `sprueche.json` - Main data source (~300KB, ~600 quotes)
+- `sponti.csv` - CSV backup of quotes
+- `server.js` - Standalone Node.js server (alternative to Next.js, runs on port 3000)
+
+## API
+
+`GET /api/sponti`
+- No params: random quote
+- `?category=X`: filter by category
+- `?all=true`: return all quotes with count
+- `?categories=true`: return list of available categories
