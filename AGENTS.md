@@ -23,3 +23,7 @@ No typecheck or test scripts configured.
 - `?category=X`: filter by category
 - `?all=true`: return all quotes with count
 - `?categories=true`: return list of available categories
+
+## Development
+
+After running a build to verify changes, ensure the dev server is restarted, so the user can reload the current page
