@@ -98,7 +98,7 @@
   {
     "spruch": "Alle Macht für mich!",
     "explanation": null,
-    "category": null,
+    "category": "Ego",
     "source": "https://www.fh-muenster.de/ciw/downloads/personal/juestel/juestel/Sponti-Sprueche.pdf",
     "rating": null,
     "id": 13
@@ -186,7 +186,7 @@
   {
     "spruch": "Alles hat Grenzen, nur die Dummheit ist unendlich.",
     "explanation": null,
-    "category": null,
+    "category": "Dummheit",
     "source": "https://www.fh-muenster.de/ciw/downloads/personal/juestel/juestel/Sponti-Sprueche.pdf",
     "rating": null,
     "id": 24
@@ -250,7 +250,7 @@
   {
     "spruch": "Alter schützt nicht vor Torheit, aber Dummheit vor Intelligenz.",
     "explanation": null,
-    "category": null,
+    "category": "Dummheit",
     "source": "https://www.fh-muenster.de/ciw/downloads/personal/juestel/juestel/Sponti-Sprueche.pdf",
     "rating": null,
     "id": 32
@@ -1330,7 +1330,7 @@
   {
     "spruch": "Der Klügere gibt vor, nachzugeben.",
     "explanation": null,
-    "category": null,
+    "category": "Dummheit",
     "source": "https://www.fh-muenster.de/ciw/downloads/personal/juestel/juestel/Sponti-Sprueche.pdf",
     "rating": null,
     "id": 167
@@ -1930,7 +1930,7 @@
   {
     "spruch": "Dummheit, verlass ihn nicht, sonst steht er ganz allein.",
     "explanation": null,
-    "category": null,
+    "category": "Dummheit",
     "source": "https://www.fh-muenster.de/ciw/downloads/personal/juestel/juestel/Sponti-Sprueche.pdf",
     "rating": null,
     "id": 242
@@ -2362,7 +2362,7 @@
   {
     "spruch": "Erfahrung ist die Summe der Dummheiten, die man im Bedarfsfall wieder anwendet ",
     "explanation": "(Dieter Hildebrandt, 23.5.2k2, Morgenmagazin 7:38)",
-    "category": null,
+    "category": "Dummheit",
     "source": "https://wolfgang-naeser-marburg.lima-city.de/htm/sponti.htm",
     "rating": null,
     "id": 296
@@ -2826,7 +2826,7 @@
   {
     "spruch": "Freiheit für die Bücher, verkauft die Verleger!",
     "explanation": null,
-    "category": null,
+    "category": "Freiheit",
     "source": "https://www.fh-muenster.de/ciw/downloads/personal/juestel/juestel/Sponti-Sprueche.pdf",
     "rating": null,
     "id": 354
@@ -3162,7 +3162,7 @@
   {
     "spruch": "God shave the queen.",
     "explanation": null,
-    "category": null,
+    "category": "Anglophilie",
     "source": "https://www.fh-muenster.de/ciw/downloads/personal/juestel/juestel/Sponti-Sprueche.pdf",
     "rating": null,
     "id": 396
@@ -5362,7 +5362,7 @@
   {
     "spruch": "Lieber natürliche Dummheit als künstliche Intelligenz.",
     "explanation": null,
-    "category": "Technik",
+    "category": "Technik,Dummheit",
     "source": "https://wolfgang-naeser-marburg.lima-city.de/htm/sponti.htm",
     "rating": null,
     "id": 671
@@ -6178,7 +6178,7 @@
   {
     "spruch": "Nicht jeder Mann, der raucht, ist ein Vulkan.",
     "explanation": null,
-    "category": null,
+    "category": "Health",
     "source": "https://wolfgang-naeser-marburg.lima-city.de/htm/sponti.htm",
     "rating": null,
     "id": 773
@@ -7642,7 +7642,7 @@
   {
     "spruch": "Was der Bauer nicht kennt, vergisst er nicht.",
     "explanation": null,
-    "category": null,
+    "category": "Bauernweisheit",
     "source": "https://wolfgang-naeser-marburg.lima-city.de/htm/sponti.htm",
     "rating": null,
     "id": 956
@@ -7962,7 +7962,7 @@
   {
     "spruch": "Wenn Dummheit Klingeln würde, dann bräuchtest Du gar kein Handy mehr.",
     "explanation": null,
-    "category": "Technik",
+    "category": "Technik,Dummheit",
     "source": "https://wolfgang-naeser-marburg.lima-city.de/htm/sponti.htm",
     "rating": null,
     "id": 996

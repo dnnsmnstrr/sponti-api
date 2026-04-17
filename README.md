@@ -2,6 +2,11 @@
 
 Random German quotes ("Sprueche") API.
 
+## Sources
+
+- https://www-backend.fh-muenster.de/ciw/downloads-ciw/personenprofile/juestel/science-and-fun/Sponti-Sprueche.pdf
+- https://wolfgang-naeser-marburg.lima-city.de/htm/sponti.htm
+
 ## API Endpoints
 
 ### GET /api/sponti

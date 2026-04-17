@@ -81,6 +81,12 @@ export default function Admin() {
     setEditId(s.id);
   };
 
+  const handleRandom = () => {
+    if (sprueche.length === 0) return;
+    const random = sprueche[Math.floor(Math.random() * sprueche.length)];
+    handleEdit(random);
+  };
+
   const filtered = sprueche.filter(s => 
     s.spruch.toLowerCase().includes(filter.toLowerCase()) ||
     s.category?.toLowerCase().includes(filter.toLowerCase())
@@ -88,7 +94,10 @@ export default function Admin() {
 
   return (
     <div style={{ maxWidth: 1200, margin: "0 auto", padding: 20, fontFamily: "system-ui" }}>
-      <h1>Sponti Admin</h1>
+      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+        <h1 style={{ margin: 0 }}>Sponti Admin</h1>
+        <button type="button" onClick={handleRandom} style={{ padding: "8px 16px" }}>🎲 Random</button>
+      </div>
       
       <form onSubmit={handleSubmit} style={{ marginBottom: 20, padding: 20, background: "#f5f5f5", borderRadius: 8 }}>
         <div style={{ marginBottom: 10 }}>
