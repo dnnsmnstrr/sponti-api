@@ -26,11 +26,10 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const categories = searchParams.get('categories');
   
   const data = loadSprueche();
   
-  if (categories === 'true') {
+  if (searchParams.get('categories') === 'true') {
     const cats = new Set<string>();
     data.forEach(s => {
       if (s.category) {

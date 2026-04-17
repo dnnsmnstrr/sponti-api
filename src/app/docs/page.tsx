@@ -8,6 +8,7 @@ export default function Docs() {
   const [sprueche, setSprueche] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [currentUrl, setCurrentUrl] = useState("");
 
   useEffect(() => {
     fetchCategories();
@@ -15,7 +16,7 @@ export default function Docs() {
   }, []);
 
   const fetchCategories = async () => {
-    const res = await fetch("/api/sponti?categories=true");
+    const res = await fetch("/api/sponti/categories");
     const data = await res.json();
     setCategories(data.categories);
   };
@@ -25,6 +26,7 @@ export default function Docs() {
     const url = selectedCategory 
       ? `/api/sponti?category=${encodeURIComponent(selectedCategory)}`
       : "/api/sponti";
+    setCurrentUrl(url);
     const res = await fetch(url);
     const data = await res.json();
     setSpruch(data);
@@ -36,15 +38,30 @@ export default function Docs() {
     const url = selectedCategory 
       ? `/api/sponti?all=true&category=${encodeURIComponent(selectedCategory)}`
       : "/api/sponti?all=true";
+    setCurrentUrl(url);
     const res = await fetch(url);
     const data = await res.json();
     setSprueche(data);
     setLoading(false);
   };
 
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+  };
+
+  const getCurl = () => `curl -s ${currentUrl.startsWith('/') ? 'http://localhost:3000' : ''}${currentUrl}`;
+  const getFetch = () => `fetch('${currentUrl}').then(r => r.json()).then(console.log)`;
+
   return (
     <div style={{ maxWidth: 900, margin: "0 auto", padding: 20, fontFamily: "system-ui" }}>
-      <h1>Sponti API Docs</h1>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <h1 style={{ margin: 0 }}>Sponti API Docs</h1>
+        {typeof window !== 'undefined' && window.location.hostname === 'localhost' && (
+          <a href="/admin" style={{ padding: "8px 16px", background: "#eee", borderRadius: 4, textDecoration: "none" }}>
+            Admin ↗
+          </a>
+        )}
+      </div>
 
       <section style={{ marginBottom: 30 }}>
         <h2>GET /api/sponti</h2>
@@ -96,6 +113,17 @@ export default function Docs() {
           </button>
         </div>
 
+        {currentUrl && (
+          <div style={{ marginBottom: 15 }}>
+            <button onClick={() => copyToClipboard(getCurl())} style={{ padding: "6px 12px", marginRight: 8 }}>
+              Copy curl
+            </button>
+            <button onClick={() => copyToClipboard(getFetch())} style={{ padding: "6px 12px" }}>
+              Copy fetch
+            </button>
+          </div>
+        )}
+
         {spruch && (
           <div style={{ background: "#e8f5e9", padding: 15, borderRadius: 8 }}>
             <h4 style={{ marginTop: 0 }}>Random Response</h4>
@@ -124,17 +152,20 @@ export default function Docs() {
         <h2>Categories ({categories.length})</h2>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
           {categories.map(c => (
-            <span
+            <button
               key={c}
+              onClick={() => setSelectedCategory(c)}
               style={{
                 padding: "4px 8px",
-                background: "#eee",
+                background: selectedCategory === c ? "#d0d0d0" : "#eee",
+                border: "1px solid #ccc",
                 borderRadius: 4,
                 fontSize: 14,
+                cursor: "pointer",
               }}
             >
               {c}
-            </span>
+            </button>
           ))}
         </div>
       </section>
