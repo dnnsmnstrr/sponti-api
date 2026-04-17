@@ -58,7 +58,8 @@ export default function Docs() {
     navigator.clipboard.writeText(text);
   };
 
-  const getCurl = () => `curl -s ${currentUrl.startsWith('/') ? 'http://localhost:3000' : ''}${currentUrl}`;
+  const getFullUrl = () => `${typeof window !== 'undefined' ? window.location.origin : ''}${currentUrl}`;
+  const getCurl = () => `curl -s ${getFullUrl()}`;
   const getFetch = () => `fetch('${currentUrl}').then(r => r.json()).then(console.log)`;
 
   return (
@@ -108,35 +109,40 @@ export default function Docs() {
         </div>
 
         <h3>Try it</h3>
-        <div style={{ display: "flex", gap: 10, marginBottom: 15, flexWrap: "wrap" }}>
-          <select
-            value={selectedCategory}
-            onChange={e => setSelectedCategory(e.target.value)}
-            style={{ padding: 8 }}
-          >
-            <option value="">All categories</option>
-            {categories.map(c => (
-              <option key={c} value={c}>{c}</option>
-            ))}
-          </select>
-          <button onClick={testRandom} disabled={loading} style={{ padding: "8px 16px" }}>
-            Random
-          </button>
-          <button onClick={testAll} disabled={loading} style={{ padding: "8px 16px" }}>
-            All ({selectedCategory || "all"})
-          </button>
-        </div>
-
-        {currentUrl && (
-          <div style={{ marginBottom: 15 }}>
-            <button onClick={() => copyToClipboard(getCurl())} style={{ padding: "6px 12px", marginRight: 8 }}>
-              Copy curl
+        <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 10, marginBottom: 15 }}>
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            <select
+              value={selectedCategory}
+              onChange={e => setSelectedCategory(e.target.value)}
+              style={{ padding: 8 }}
+            >
+              <option value="">All categories</option>
+              {categories.map(c => (
+                <option key={c} value={c}>{c}</option>
+              ))}
+            </select>
+            <button onClick={testRandom} disabled={loading} style={{ padding: "8px 16px" }}>
+              Random
             </button>
-            <button onClick={() => copyToClipboard(getFetch())} style={{ padding: "6px 12px" }}>
-              Copy fetch
+            <button onClick={testAll} disabled={loading} style={{ padding: "8px 16px" }}>
+              All ({selectedCategory || "all"})
             </button>
           </div>
-        )}
+
+          {currentUrl && (
+            <div style={{ display: "flex", gap: 8 }}>
+              <button onClick={() => copyToClipboard(getFullUrl())} style={{ padding: "6px 12px" }}>
+                Copy GET url
+              </button>
+              <button onClick={() => copyToClipboard(getCurl())} style={{ padding: "6px 12px" }}>
+                Copy curl
+              </button>
+              <button onClick={() => copyToClipboard(getFetch())} style={{ padding: "6px 12px" }}>
+                Copy fetch
+              </button>
+            </div>
+          )}
+        </div>
 
         {spruch && (
           <div style={{ background: "#e8f5e9", padding: 15, borderRadius: 8 }}>
