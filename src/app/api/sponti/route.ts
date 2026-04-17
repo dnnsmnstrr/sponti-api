@@ -29,22 +29,8 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const category = searchParams.get('category');
   const all = searchParams.get('all');
-  const categories = searchParams.get('categories');
   
   const data = loadSprueche();
-  
-  if (categories === 'true') {
-    const cats = new Set<string>();
-    data.forEach(s => {
-      if (s.category) {
-        s.category.split(',').forEach(c => cats.add(c.trim()));
-      }
-    });
-    return NextResponse.json({
-      categories: Array.from(cats).sort()
-    });
-  }
-  
   let filtered = data;
   
   if (category) {

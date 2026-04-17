@@ -33,7 +33,7 @@ export default function Admin() {
   };
 
   const fetchCategories = async () => {
-    const res = await fetch(API_URL + "?categories=true");
+    const res = await fetch("/api/sponti/categories");
     const data = await res.json();
     setCategories(data.categories);
   };
@@ -94,9 +94,14 @@ export default function Admin() {
 
   return (
     <div style={{ maxWidth: 1200, margin: "0 auto", padding: 20, fontFamily: "system-ui" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-        <h1 style={{ margin: 0 }}>Sponti Admin</h1>
-        <button type="button" onClick={handleRandom} style={{ padding: "8px 16px" }}>🎲 Random</button>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <h1 style={{ margin: 0 }}>Sponti Admin</h1>
+          <button type="button" onClick={handleRandom} style={{ padding: "8px 16px" }}>🎲 Random</button>
+        </div>
+        <a href="/docs" style={{ padding: "8px 16px", background: "#eee", borderRadius: 4, textDecoration: "none" }}>
+          Docs ↗
+        </a>
       </div>
       
       <form onSubmit={handleSubmit} style={{ marginBottom: 20, padding: 20, background: "#f5f5f5", borderRadius: 8 }}>
