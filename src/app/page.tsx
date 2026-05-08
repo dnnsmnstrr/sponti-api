@@ -31,6 +31,17 @@ function QuotePage() {
     fetchQuote();
   }, [fetchQuote]);
 
+  useEffect(() => {
+    const refreshParam = searchParams.get("refresh");
+    if (!refreshParam) return;
+
+    const seconds = parseInt(refreshParam, 10);
+    if (isNaN(seconds) || seconds <= 0) return;
+
+    const timer = setInterval(fetchQuote, seconds * 1000);
+    return () => clearInterval(timer);
+  }, [searchParams, fetchQuote]);
+
   return (
     <main
       onClick={fetchQuote}
