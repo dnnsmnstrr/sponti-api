@@ -184,14 +184,36 @@ export default function Admin() {
         )}
       </form>
 
-      <div style={{ marginBottom: 20 }}>
-        <input
-          placeholder="Filter..."
-          value={filter}
-          onChange={e => setFilter(e.target.value)}
-          style={{ padding: 8, width: 300 }}
-        />
-        <span style={{ marginLeft: 10 }}>{filtered.length} / {sprueche.length}</span>
+      <div style={{ marginBottom: 20, display: "flex", alignItems: "center", gap: 8 }}>
+        <div style={{ position: "relative", width: 300 }}>
+          <input
+            placeholder="Filter..."
+            value={filter}
+            onChange={e => setFilter(e.target.value)}
+            style={{ padding: 8, width: "100%", boxSizing: "border-box", paddingRight: 30 }}
+          />
+          {filter && (
+            <button
+              type="button"
+              onClick={() => setFilter("")}
+              style={{
+                position: "absolute",
+                right: 8,
+                top: "50%",
+                transform: "translateY(-50%)",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                fontSize: 16,
+                color: "#666",
+                padding: 0,
+              }}
+            >
+              ✕
+            </button>
+          )}
+        </div>
+        <span>{filtered.length} / {sprueche.length}</span>
       </div>
 
       <table style={{ width: "100%", borderCollapse: "collapse" }}>
